@@ -1,4 +1,5 @@
 #include <iostream>
+#include <actors.h>
 
 using namespace std;
 
@@ -12,10 +13,18 @@ void print_header()
 
 void game_loop()
 {
+    Dragon *dragon = new Dragon("Black Dragon", 50, 2, false);
+    Creature *bat = new Creature("Bat", 5);
+    Creature *toad = new Creature("Toad", 1);
+    Creature *tiger = new Creature("Tiger", 12);
+    Wizzard *evil_wizzard = new Wizzard("Evil Wizzard", 1000);
+
+    Wizzard *hero = new Wizzard("Gandolf", 75);
+
     bool isDone = false;
     while (!isDone)
     {
-        std::cout << "A creature appeared" << std::endl;
+        std::cout << "A " << dragon->get_name() << " appeared" << std::endl;
 
         char cmd;
         std::cout << "Do you [a]ttack, [r]unaway, or [l]ook around? ";
