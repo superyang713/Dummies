@@ -6,9 +6,9 @@ CXX ?= g++
 # Extension of source files used in the project
 SRC_EXT = cpp
 # Path to the source directory, relative to the makefile
-SRC_PATH = ./Sources/
-# Path to the headers (includes) directory, relative to the makefile
-INC_PATH = ./Headers/
+SRC_PATH = src
+# Path to the source directory, relative to the makefile
+INC_PATH = include
 # Space-separated pkg-config libraries used by this project
 LIBS =
 # General compiler flags
