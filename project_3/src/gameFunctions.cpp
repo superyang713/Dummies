@@ -1,5 +1,7 @@
 #include <iostream>
 #include <actors.h>
+#include <vector>
+#include <lib.h>
 
 using namespace std;
 
@@ -21,24 +23,53 @@ void game_loop()
 
     Wizzard *hero = new Wizzard("Gandolf", 75);
 
+    // A vecotr that holds all monsters.
+    vector<Creature> Monsters;
+    Monsters.push_back(*dragon);
+    Monsters.push_back(*bat);
+    Monsters.push_back(*toad);
+    Monsters.push_back(*tiger);
+    Monsters.push_back(*evil_wizzard);
+
     bool isDone = false;
     while (!isDone)
     {
-        std::cout << "A " << dragon->get_name() << " appeared" << std::endl;
+        auto size = Monsters.size();
+        int rand_index = randint(0, size-1);
+        Creature active_monster = Monsters[rand_index];
+
+        std::cout << "A " << active_monster.get_name() << " appeared"
+            << std::endl;
 
         char cmd;
         std::cout << "Do you [a]ttack, [r]unaway, or [l]ook around? ";
         std::cin >> cmd;
+        std::cout << std::endl;
         switch (cmd)
         {
             case 'a':
-                std::cout << "attack" << std::endl;
+                if (hero->attack(active_monster)) {
+                    Monsters.erase(Monsters.begin() + rand_index);
+                    std::cout << "The wizzard defeated " << active_monster.name
+                        << std::endl;
+                }
+                else {
+                    std::cout << "The wizzard has been defeated by the "
+                        << "powerful " << active_monster.name << std::endl;
+                }
                 break;
             case 'r':
-                std::cout << "run away" << std::endl;
+                std::cout << "The wizzard has become unsure of his power and "
+                    << "flees!!!" << std::endl;
                 break;
             case 'l':
-                std::cout << "look around" << std::endl;
+                std::cout << "The wizzard " << hero->name << " taks in the "
+                    << "surroundings and sees:" << std::endl;
+                for (auto it = begin(Monsters); it != end(Monsters); ++it)
+                {
+                    std::cout << "* " << it->name << " of level " << it->level
+                        << std::endl << std::endl;
+                }
                 break;
             default:
                 std::cout << "OK, exiting game... bye!" << std::endl;

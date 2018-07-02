@@ -27,7 +27,8 @@ int Creature::defensive_roll()
     return roll * level;
 }
 
-Dragon::Dragon(string StartName, int StartLevel, int Scaliness, bool Breaths_fire) : Creature(StartName, StartLevel)
+Dragon::Dragon(string StartName, int StartLevel, int Scaliness,
+        bool Breaths_fire) : Creature(StartName, StartLevel)
 {
     name = StartName;
     level = StartLevel;
@@ -44,7 +45,8 @@ int Dragon::defensive_roll()
     return value;
 }
 
-Wizzard::Wizzard(string StartName, int StartLevel) : Creature(StartName, StartLevel)
+Wizzard::Wizzard(string StartName, int StartLevel) : Creature(StartName,
+        StartLevel)
 {
     name = StartName;
     level = StartLevel;
