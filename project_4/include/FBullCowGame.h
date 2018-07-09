@@ -15,7 +15,8 @@ using int32 = int;
  *  \brief Brief struct description
  *  contains the feedback of correct number of words
  */
-struct FBullCowCount {
+struct FBullCowCount
+{
     int32 Bulls = 0; /*!< number of correct words at the correct position */
     int32 Cows  = 0; /*!< number of correct words at the wrong position */
 };
