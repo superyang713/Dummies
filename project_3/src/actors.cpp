@@ -30,8 +30,6 @@ int Creature::defensive_roll()
 Dragon::Dragon(string StartName, int StartLevel, int Scaliness,
         bool Breaths_fire) : Creature(StartName, StartLevel)
 {
-    name = StartName;
-    level = StartLevel;
     scaliness = Scaliness;
     breaths_fire = Breaths_fire;
 }
